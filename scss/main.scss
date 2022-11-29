@@ -1,0 +1,386 @@
+@use 'colores' as c;
+@use 'nombres' as n;
+
+
+html {
+    margin: 0 auto;
+    max-width: 1200px;
+    font-family: "Open Sans", sans-serif;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+
+    h2 {
+      flex: 1 0 100%;
+      margin: 3rem 0 0 0;
+    }
+
+    p {
+      flex: 1 0 100%;
+      margin: 1rem 0;
+    }
+
+    article {
+      flex: 1;
+      padding: 1rem;
+
+      p {
+        display: flex;
+        justify-content: space-between;
+
+            label {
+            font-weight: bold;
+            }
+        }
+    }
+
+    .color-principal-1{
+        & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-firebrick;
+        }
+        & .nombre::before{
+            content:n.$nombre-1;
+        }
+        & .hex::before{
+            content:n.$hex-1;
+        }
+        & .rgb::before{
+            content:n.$rgb-1;
+        }
+        & .hsl::before{
+            content:n.$hsl-1;
+        }   
+    }
+    .color-principal-2{
+        & .muestra{
+        width: 100%;
+        height: 6rem;
+         background-color: c.$color-greenyellow;
+        }
+        & .nombre::before{
+            content:n.$nombre-2;
+        }
+        & .hex::before{
+            content:n.$hex-2;
+        }
+        & .rgb::before{
+            content:n.$rgb-2;
+        }
+        & .hsl::before{
+            content:n.$hsl-2;
+        }
+    }
+    .color-principal-3{
+        & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-deepskyblue;
+        }
+        & .nombre::before{
+            content:n.$nombre-3;
+        }
+        & .hex::before{
+            content:n.$hex-3;
+        }
+        & .rgb::before{
+            content:n.$rgb-3;
+        }
+        & .hsl::before{
+            content:n.$hsl-3;
+        }
+    }
+      .color-principal-4{
+        & .muestra{
+        width: 100%;
+        height: 6rem;
+         background-color: c.$color-blueviolet;
+        }
+        & .nombre::before{
+            content:n.$nombre-4;
+        } 
+        & .hex::before{
+            content:n.$hex-4;
+        }
+        & .rgb::before{
+            content:n.$rgb-4;
+        }
+        & .hsl::before{
+            content:n.$hsl-4;
+        } 
+    }
+}
+
+.tonalidades-color-principal-1{
+    & h3::before{
+        content: n.$nombre-1;
+    }
+    & .muestra{
+        flex-direction: row;
+        display: flex;
+        & .claro{
+            width: 100%;
+            height: 6rem;
+            background-color:lighten($color:c.$color-firebrick, $amount: 25%);
+        }
+        & .normal{
+            width: 100%;
+            height: 6rem;
+            background-color:c.$color-firebrick;
+        }
+        & .oscuro{
+            width: 100%;
+            height: 6rem;
+            background-color:darken($color: c.$color-firebrick, $amount: 25%);
+        }
+    }
+}
+
+.tonalidades-color-principal-2{
+    & h3::before{
+        content: n.$nombre-2;
+    }
+    & .muestra{
+        flex-direction: row;
+        display: flex;
+        & .claro{
+            width: 100%;
+            height: 6rem;
+            background-color:lighten($color:c.$color-greenyellow, $amount: 25%);
+        }
+        & .normal{
+            width: 100%;
+            height: 6rem;
+            background-color:c.$color-greenyellow;
+        }
+        & .oscuro{
+            width: 100%;
+            height: 6rem;
+            background-color:darken($color: c.$color-greenyellow, $amount: 25%);
+        }
+    }
+}
+
+.tonalidades-color-principal-3{
+    & h3::before{
+        content: n.$nombre-3;
+    }
+    & .muestra{
+        flex-direction: row;
+        display: flex;
+        & .claro{
+            width: 100%;
+            height: 6rem;
+            background-color:lighten($color:c.$color-deepskyblue, $amount: 25%);
+        }
+        & .normal{
+            width: 100%;
+            height: 6rem;
+            background-color:c.$color-deepskyblue;
+        }
+        & .oscuro{
+            width: 100%;
+            height: 6rem;
+            background-color:darken($color: c.$color-deepskyblue, $amount: 25%);
+        }
+    }
+}
+
+.tonalidades-color-principal-4{
+    & h3::before{
+        content: n.$nombre-4;
+    }
+    & .muestra{
+        flex-direction: row;
+        display: flex;
+        & .claro{
+            width: 100%;
+            height: 6rem;
+            background-color:lighten($color:c.$color-blueviolet, $amount: 25%);
+        }
+        & .normal{
+            width: 100%;
+            height: 6rem;
+            background-color:c.$color-blueviolet;
+        }
+        & .oscuro{
+            width: 100%;
+            height: 6rem;
+            background-color:darken($color: c.$color-blueviolet, $amount: 25%);
+        }
+    }
+}
+
+.combinaciones-color-principal-1{
+    & h3::before{
+        content: n.$nombre-1;
+    }
+    & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-firebrick;
+    }
+
+    & .mix-2{
+        & p::before{
+            content: n.$mezcla1;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-firebrick,c.$color-greenyellow, 60%);
+        }
+        
+    }
+    & .mix-3{
+        & p::before{
+            content: n.$mezcla2;
+        }
+        & div{
+            width: 100%;
+            height: 3rem; 
+            background-color: mix(c.$color-firebrick,c.$color-deepskyblue, 60%);
+        }
+    }
+    & .mix-4{
+        & p::before{
+            content: n.$mezcla3;
+        }
+
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-firebrick,c.$color-blueviolet, 60%);
+        }
+    }
+}
+
+.combinaciones-color-principal-2{
+    & h3::before{
+        content: n.$nombre-2;
+    }
+    & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-greenyellow;
+    }
+    & .mix-1{
+        & p::before{
+            content: n.$mezcla4;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-greenyellow,c.$color-firebrick, 60%);
+        }
+    }
+    & .mix-3 {
+        & p::before{
+            content: n.$mezcla5;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-greenyellow,c.$color-deepskyblue, 60%);
+        }
+    }
+    & .mix-4 {
+        & p::before{
+            content: n.$mezcla6;
+        }
+
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-greenyellow,c.$color-blueviolet, 60%);
+    }
+    }
+}
+
+.combinaciones-color-principal-3{
+    & h3::before{
+        content: n.$nombre-3;
+    }
+    & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-deepskyblue;
+    }
+    & .mix-1 {
+        & p::before{
+            content: n.$mezcla7;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-deepskyblue,c.$color-firebrick, 60%);
+        }
+    }
+    & .mix-2 {
+        & p::before{
+            content: n.$mezcla8;
+        }
+
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-deepskyblue,c.$color-greenyellow, 60%);
+        }
+    }
+    & .mix-4 {
+        & p::before{
+            content: n.$mezcla9;
+        }
+
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-deepskyblue,c.$color-blueviolet, 60%);
+        }
+    }
+}
+
+.combinaciones-color-principal-4{
+    & h3::before{
+        content: n.$nombre-4;
+    }
+    & .muestra{
+        width: 100%;
+        height: 6rem;
+        background-color: c.$color-blueviolet;
+    }
+    & .mix-1{
+        & p::before{
+            content: n.$mezcla10;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-blueviolet,c.$color-firebrick, 60%);
+        }
+    }
+    & .mix-2 {
+        & p::before{
+            content: n.$mezcla11;
+        }
+
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-blueviolet,c.$color-greenyellow, 60%);
+        }
+    }
+    & .mix-3 {
+        & p::before{
+            content: n.$mezcla12;
+        }
+        & div{
+        width: 100%;
+        height: 3rem; 
+        background-color: mix(c.$color-blueviolet,c.$color-deepskyblue, 60%);
+        }
+    }
+}
