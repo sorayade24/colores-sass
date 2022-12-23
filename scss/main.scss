@@ -1,386 +1,137 @@
-@use 'colores' as c;
-@use 'nombres' as n;
+// Variables /////////////////////
 
+$catalogo-colores: (
+    #4682b4,  // steelblue 4682b4
+    #ff69b4,  // hotpink ff69b4
+    #daa520,  // goldenrod daa520
+    #228b22   // forestgreen 228b22
+);
+
+$max-width: 1200px;
+
+$tonalidad: 25%;
+$combinacion: 60%;
+
+$h-muestra: 75px;
+
+%muestra-mitad {
+    height: calc($h-muestra / 2);
+}
+
+// Estilos //////////////////////
 
 html {
-    margin: 0 auto;
-    max-width: 1200px;
-    font-family: "Open Sans", sans-serif;
+  margin: 0 auto;
+  max-width: $max-width;
+  font-family: "Open Sans", sans-serif;
 }
 
 section {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    h2 {
-      flex: 1 0 100%;
-      margin: 3rem 0 0 0;
-    }
+  h2 {
+    flex: 1 0 100%;
+    margin: 3rem 0 0 0;
+  }
+
+  p {
+    flex: 1 0 100%;
+    margin: 1rem 0;
+  }
+
+  article {
+    flex: 1;
+    padding: 1rem;
 
     p {
-      flex: 1 0 100%;
-      margin: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      label {
+        font-weight: bold;
+      }
     }
-
-    article {
-      flex: 1;
-      padding: 1rem;
-
-      p {
-        display: flex;
-        justify-content: space-between;
-
-            label {
-            font-weight: bold;
-            }
-        }
-    }
-
-    .color-principal-1{
-        & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-firebrick;
-        }
-        & .nombre::before{
-            content:n.$nombre-1;
-        }
-        & .hex::before{
-            content:n.$hex-1;
-        }
-        & .rgb::before{
-            content:n.$rgb-1;
-        }
-        & .hsl::before{
-            content:n.$hsl-1;
-        }   
-    }
-    .color-principal-2{
-        & .muestra{
-        width: 100%;
-        height: 6rem;
-         background-color: c.$color-greenyellow;
-        }
-        & .nombre::before{
-            content:n.$nombre-2;
-        }
-        & .hex::before{
-            content:n.$hex-2;
-        }
-        & .rgb::before{
-            content:n.$rgb-2;
-        }
-        & .hsl::before{
-            content:n.$hsl-2;
-        }
-    }
-    .color-principal-3{
-        & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-deepskyblue;
-        }
-        & .nombre::before{
-            content:n.$nombre-3;
-        }
-        & .hex::before{
-            content:n.$hex-3;
-        }
-        & .rgb::before{
-            content:n.$rgb-3;
-        }
-        & .hsl::before{
-            content:n.$hsl-3;
-        }
-    }
-      .color-principal-4{
-        & .muestra{
-        width: 100%;
-        height: 6rem;
-         background-color: c.$color-blueviolet;
-        }
-        & .nombre::before{
-            content:n.$nombre-4;
-        } 
-        & .hex::before{
-            content:n.$hex-4;
-        }
-        & .rgb::before{
-            content:n.$rgb-4;
-        }
-        & .hsl::before{
-            content:n.$hsl-4;
-        } 
-    }
+  }
 }
 
-.tonalidades-color-principal-1{
-    & h3::before{
-        content: n.$nombre-1;
-    }
-    & .muestra{
-        flex-direction: row;
-        display: flex;
-        & .claro{
-            width: 100%;
-            height: 6rem;
-            background-color:lighten($color:c.$color-firebrick, $amount: 25%);
-        }
-        & .normal{
-            width: 100%;
-            height: 6rem;
-            background-color:c.$color-firebrick;
-        }
-        & .oscuro{
-            width: 100%;
-            height: 6rem;
-            background-color:darken($color: c.$color-firebrick, $amount: 25%);
-        }
-    }
-}
+@for $i from 1 through length($catalogo-colores) {
+  $col: nth($catalogo-colores, $i);
+  $col-name: "#{invert(invert($col))}";
+  $col-hex: "#{$col}";
+  $col-rgb: "#{red($col)} / #{green($col)} / #{blue($col)}";
+  $col-hsl: "#{round(hue($col))} / #{round(saturation($col))} / #{round(lightness($col))}";
 
-.tonalidades-color-principal-2{
-    & h3::before{
-        content: n.$nombre-2;
-    }
-    & .muestra{
-        flex-direction: row;
-        display: flex;
-        & .claro{
-            width: 100%;
-            height: 6rem;
-            background-color:lighten($color:c.$color-greenyellow, $amount: 25%);
-        }
-        & .normal{
-            width: 100%;
-            height: 6rem;
-            background-color:c.$color-greenyellow;
-        }
-        & .oscuro{
-            width: 100%;
-            height: 6rem;
-            background-color:darken($color: c.$color-greenyellow, $amount: 25%);
-        }
-    }
-}
-
-.tonalidades-color-principal-3{
-    & h3::before{
-        content: n.$nombre-3;
-    }
-    & .muestra{
-        flex-direction: row;
-        display: flex;
-        & .claro{
-            width: 100%;
-            height: 6rem;
-            background-color:lighten($color:c.$color-deepskyblue, $amount: 25%);
-        }
-        & .normal{
-            width: 100%;
-            height: 6rem;
-            background-color:c.$color-deepskyblue;
-        }
-        & .oscuro{
-            width: 100%;
-            height: 6rem;
-            background-color:darken($color: c.$color-deepskyblue, $amount: 25%);
-        }
-    }
-}
-
-.tonalidades-color-principal-4{
-    & h3::before{
-        content: n.$nombre-4;
-    }
-    & .muestra{
-        flex-direction: row;
-        display: flex;
-        & .claro{
-            width: 100%;
-            height: 6rem;
-            background-color:lighten($color:c.$color-blueviolet, $amount: 25%);
-        }
-        & .normal{
-            width: 100%;
-            height: 6rem;
-            background-color:c.$color-blueviolet;
-        }
-        & .oscuro{
-            width: 100%;
-            height: 6rem;
-            background-color:darken($color: c.$color-blueviolet, $amount: 25%);
-        }
-    }
-}
-
-.combinaciones-color-principal-1{
-    & h3::before{
-        content: n.$nombre-1;
-    }
-    & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-firebrick;
+  .color-principal-#{$i} {
+    .muestra {
+      background-color: $col;
+      height: $h-muestra;
     }
 
-    & .mix-2{
-        & p::before{
-            content: n.$mezcla1;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-firebrick,c.$color-greenyellow, 60%);
-        }
-        
+    .datos {
+      .nombre::before {
+        content: "#{$col-name}";
+      }
+      .hex::before {
+        content:  $col-hex;
+      }
+      .rgb::before {
+        content: $col-rgb;
+      }
+      .hsl::before {
+        content: $col-hsl;
+      }
     }
-    & .mix-3{
-        & p::before{
-            content: n.$mezcla2;
-        }
-        & div{
-            width: 100%;
-            height: 3rem; 
-            background-color: mix(c.$color-firebrick,c.$color-deepskyblue, 60%);
-        }
-    }
-    & .mix-4{
-        & p::before{
-            content: n.$mezcla3;
-        }
+  }
 
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-firebrick,c.$color-blueviolet, 60%);
-        }
+  .tonalidades-color-principal-#{$i} {
+    h3:before {
+      content: $col-name;
     }
-}
+    .muestra {
+      display: flex;
+      height: $h-muestra;
 
-.combinaciones-color-principal-2{
-    & h3::before{
-        content: n.$nombre-2;
-    }
-    & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-greenyellow;
-    }
-    & .mix-1{
-        & p::before{
-            content: n.$mezcla4;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-greenyellow,c.$color-firebrick, 60%);
-        }
-    }
-    & .mix-3 {
-        & p::before{
-            content: n.$mezcla5;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-greenyellow,c.$color-deepskyblue, 60%);
-        }
-    }
-    & .mix-4 {
-        & p::before{
-            content: n.$mezcla6;
-        }
+      & > div {
+        flex: 1;
+      }
 
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-greenyellow,c.$color-blueviolet, 60%);
+      .claro {
+        background-color: lighten($col, $tonalidad);
+      }
+      .normal {
+        background-color: $col;
+      }
+      .oscuro {
+        background-color: darken($col, $tonalidad);
+      }
     }
-    }
-}
+  }
 
-.combinaciones-color-principal-3{
-    & h3::before{
-        content: n.$nombre-3;
+  .combinaciones-color-principal-#{$i} {
+    h3:before {
+      content: $col-name;
     }
-    & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-deepskyblue;
+    .muestra {
+      background-color: $col;
+      height: $h-muestra;
     }
-    & .mix-1 {
-        & p::before{
-            content: n.$mezcla7;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-deepskyblue,c.$color-firebrick, 60%);
-        }
-    }
-    & .mix-2 {
-        & p::before{
-            content: n.$mezcla8;
-        }
 
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-deepskyblue,c.$color-greenyellow, 60%);
-        }
-    }
-    & .mix-4 {
-        & p::before{
-            content: n.$mezcla9;
-        }
+    @for $m from 1 through length($catalogo-colores) {
+      @if $i != $m {
+        $col-mix: nth($catalogo-colores, $m);
+        $col-name-mix: "#{invert(invert($col-mix))}";
 
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-deepskyblue,c.$color-blueviolet, 60%);
-        }
-    }
-}
+        .mix-#{$m} {
+          p:before {
+            content: $col-name + " con " + $col-name-mix;
+          }
 
-.combinaciones-color-principal-4{
-    & h3::before{
-        content: n.$nombre-4;
+          div {
+              @extend %muestra-mitad;
+              background-color: mix($col, $col-mix, 60%);
+          }
+        }
+      }
     }
-    & .muestra{
-        width: 100%;
-        height: 6rem;
-        background-color: c.$color-blueviolet;
-    }
-    & .mix-1{
-        & p::before{
-            content: n.$mezcla10;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-blueviolet,c.$color-firebrick, 60%);
-        }
-    }
-    & .mix-2 {
-        & p::before{
-            content: n.$mezcla11;
-        }
-
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-blueviolet,c.$color-greenyellow, 60%);
-        }
-    }
-    & .mix-3 {
-        & p::before{
-            content: n.$mezcla12;
-        }
-        & div{
-        width: 100%;
-        height: 3rem; 
-        background-color: mix(c.$color-blueviolet,c.$color-deepskyblue, 60%);
-        }
-    }
+  }
 }
